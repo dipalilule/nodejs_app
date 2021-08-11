@@ -23,7 +23,7 @@ pipeline {
             steps {
                  sh """
                 docker pull 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER
-                docker run --name nodejs-image-demo -p 8081:8080 -d 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER
+                docker run --name nodejs-image-demo -p 80:8080 -d 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER
               """
               
 
