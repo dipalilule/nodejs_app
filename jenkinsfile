@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                git credentialsId: 'gitcred',
+                url: 'git@github.com:dipalilule/nodejs_app.git'
             }
         }
         stage('Test') {
