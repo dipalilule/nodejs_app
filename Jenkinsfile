@@ -21,8 +21,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                docker pull 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER
+                docker pull '595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER'
                 docker run --name nodejs-image-demo -p 8081:8080 -d 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER
+              
+
 
             }
         }
