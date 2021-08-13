@@ -26,7 +26,7 @@ pipeline {
                  docker pull 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBER
                  docker run -p 8000:8081 -d 595552316002.dkr.ecr.ap-south-1.amazonaws.com/nodejs-image-demo:$BUILD_NUMBE
                  TASK_DEFINITION_FE_UAT=\$(aws ecs describe-task-definition --task-definition "\$TASK_FAMILY_FE_UAT" --region "ap-south-1")
-                 NEW_TASK_DEFINTIION_FE_UAT=$(echo $TASK_DEFINITION_FE_UAT | jq --arg IMAGE "$NEW_IMAGE_FE_UAT" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities)')
+                 NEW_TASK_DEFINTIION_FE_UAT=\$(echo \$TASK_DEFINITION_FE_UAT | jq --arg IMAGE "$NEW_IMAGE_FE_UAT" '.taskDefinition | .containerDefinitions[0].image = \$IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities)')
                  aws ecs register-task-definition --region "ap-south-1" --cli-input-json "$NEW_TASK_DEFINTIION_FE_UAT"
 
 
