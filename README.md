@@ -1,2 +1,2 @@
 # nodejs_app....!
-node application 
+node application dockerized
